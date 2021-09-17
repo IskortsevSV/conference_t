@@ -15,7 +15,7 @@
     <br><br>
     Password: <form:input type="password" path="userPassword"/>
     <br><br>
-    Authority:  <form:input path="authority"/>
+    Authority:  <form:input path="enabled"/>
     <br><br>
     <input type="submit" value="OK">
 </form:form>
