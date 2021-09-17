@@ -3,8 +3,6 @@ package com.example.conference.persistence.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Map;
 
 /**
  * by Iskortsev S.V.
@@ -21,17 +19,17 @@ public class User {
     private int id;
     @Column(name = "username")
     private String userName;
-    @Column(name = "userpassword")
+    @Column(name = "password")
     private String userPassword;
-    @Column(name = "authority")
-    private String authority;
+    @Column(name = "enabled")
+    private String enabled;
 
     public User() {
     }
 
-    public User(String userName, String userPassword, String authority) {
+    public User(String userName, String userPassword, String enabled) {
         this.userName = userName;
         this.userPassword = userPassword;
-        this.authority = authority;
+        this.enabled = enabled;
     }
 }
