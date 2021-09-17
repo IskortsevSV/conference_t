@@ -10,10 +10,10 @@ CREATE TABLE IF NOT EXISTS users
  PRIMARY KEY (id)
 );
 
-INSERT INTO users (username,userpassword,authority) 
+INSERT INTO users (username,userpassword,enabled)
 VALUES('mike','mike','admin'),('john','john','speaker'),('liza','liza','listner');
 
-INSERT INTO users (username,userpassword,authority) 
+INSERT INTO users (username,userpassword,enabled)
 VALUES('gleb','gleb','speaker'),('dima','dima','listner');
 
 CREATE TABLE IF NOT EXISTS talks
@@ -63,3 +63,10 @@ FROM conference.schedules sch
     ORDER BY date_time_start;
 
 SELECT t.id,t.report,u.userName FROM talks t LEFT JOIN  users u ON (t.speaker=u.id);
+
+CREATE TABLE authorities (
+                             id int auto_increment,
+                             username varchar(15),
+                             authority varchar(25),
+                             FOREIGN KEY (id) references users(id)
+);
