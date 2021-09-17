@@ -2,7 +2,6 @@ package com.example.conference.persistence.dao.repository;
 
 import com.example.conference.persistence.dao.repository.interfaces.SchedulesRepository;
 import com.example.conference.persistence.model.Schedule;
-import com.example.conference.persistence.model.Talk;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * by Iskortsev S.V.
