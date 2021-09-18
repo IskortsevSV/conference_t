@@ -18,19 +18,23 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     DataSource dataSource;
 
+   /* @Override
+    protected void configure(HttpSecurity security) throws Exception
+    {
+        security.httpBasic().disable();
+    }*/
+
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
         auth.jdbcAuthentication().dataSource(dataSource);
 
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/").hasAnyRole("ADMIN", "SPEAKER", "LISTENER")
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/").hasRole("LISTENER")
+        http.authorizeRequests()
                 .antMatchers("/speaker/**").hasRole("SPEAKER")
+                .antMatchers("/admin/**").hasRole("ADMIN")
                 .and().formLogin().permitAll(); // форма логина и пароля будет запрашиватся у всех
 
        // .antMatchers("/manager_info/**").hasRole("MANAGER");
