@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+
+import static com.example.conference.utils.OneTimeUtil.doNotEqualsOneTime;
 
 /**
  * by Iskortsev S.V.
@@ -72,18 +75,20 @@ public class SpeakerController {
         return "schedule-update";
     }
 
+    @RequestMapping(value = "/saveSchedule", method = RequestMethod.GET)
+    public String saveSchedule(@ModelAttribute("schedule") Schedule schedule) {
+        if (doNotEqualsOneTime(schedule, schedulesService)) return "error";
+        else {
+            schedulesService.saveSchedule(schedule);
+            return "redirect:/speaker/all";
+        }
+
+    }
+
 /*    @RequestMapping("/deleteSchedule")
     public String deleteSchedule(@RequestParam("scheduleId") int id) {
         schedulesService.deleteSchedule(id);
         return "redirect:/speaker/all";
     }*/
-
-    @RequestMapping(value = "/saveSchedule", method = RequestMethod.POST)
-    public String saveSchedule(@ModelAttribute("schedule") Schedule schedule) {
-       schedulesService.saveSchedule(schedule);
-        return "redirect:/speaker/all";
-    }
-
-
 
 }
