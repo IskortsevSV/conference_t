@@ -42,4 +42,12 @@ public class ScheduleServiceImpl implements SchedulesService {
     public void deleteSchedule(int id) {
         repository.deleteSchedule(id);
     }
+
+    @Override
+    @Transactional
+    public List<Schedule> getAll() {
+        return repository.getAll();
+    }
+
+
 }
