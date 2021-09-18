@@ -21,7 +21,7 @@ public class Schedule {
     @Column(name = "audience")
     private int audience;
     @Column(name = "date_time_start")
-    private Date dateTimeStart;
+    private String dateTimeStart;
     @Column(name = "report")
     private int report;
 
@@ -35,13 +35,14 @@ public class Schedule {
     public Schedule() {
     }
 
-    public Schedule(int audience, Date dateTimeStart, int report) {
+
+    public Schedule(int audience, String dateTimeStart, int report) {
         this.audience = audience;
         this.dateTimeStart = dateTimeStart;
         this.report = report;
     }
 
-    public Schedule(int id,Date dateTimeStart, String audienceName, String reportName, String userName) {
+    public Schedule(int id,String dateTimeStart, String audienceName, String reportName, String userName) {
         this.id = id;
         this.dateTimeStart = dateTimeStart;
         this.audienceName = audienceName;
