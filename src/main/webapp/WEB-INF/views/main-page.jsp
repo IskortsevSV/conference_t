@@ -1,12 +1,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title>Main</title>
 </head>
 <body>
 
-<h2>Hello ${user.userName}, your authority ${user.authority}</h2>
+<c:if test="${pageContext.request.userPrincipal.name != null}">
+    <h2>Welcome : ${pageContext.request.userPrincipal.name} |
+        <a href="<c:url value="/logout" />" > Logout</a></h2>
+</c:if>
+
 
 <h2>Schedules:</h2>
 
@@ -36,11 +41,18 @@
 </table>
 
 <br><br>
+<security:authorize access="hasRole('ADMIN')">
 <a href="/admin/allUsers">Click to Admin</a>
+</security:authorize>
 <br><br>
+
 <a href="/registration">Click to registration listener</a>
+
 <br><br>
 <a href="/speaker/all">Click to Speaker</a>
-
 </body>
+
+
+
+
 </html>
