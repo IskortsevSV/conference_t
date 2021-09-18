@@ -20,4 +20,7 @@ public interface SchedulesService {
     public Schedule getSchedule(int id);
 
     public void deleteSchedule(int id);
+
+    public List<Schedule> getAll();
+
 }

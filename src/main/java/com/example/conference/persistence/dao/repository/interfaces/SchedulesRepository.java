@@ -17,4 +17,6 @@ public interface SchedulesRepository {
     Schedule getSchedule(int id);
 
     void deleteSchedule(int id);
+
+    List<Schedule> getAll();
 }
