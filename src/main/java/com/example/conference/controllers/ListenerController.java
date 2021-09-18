@@ -55,7 +55,7 @@ public class ListenerController {
 
     @RequestMapping("/schedule")
     public ModelAndView showSchedule(@ModelAttribute("user") User user, ModelAndView modelAndView) {
-        user.setAuthority("Listener");
+      //  user.setAuthority("Listener");
         userService.saveUser(user);
         modelAndView.setViewName("all-users");
         return modelAndView;
