@@ -6,6 +6,7 @@ import com.example.conference.persistence.model.Authority;
 import com.example.conference.persistence.model.Schedule;
 import com.example.conference.persistence.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,6 +25,9 @@ import java.util.List;
 
 @Controller()
 public class ListenerController {
+
+  /*  @Autowired
+    private PasswordEncoder passwordEncoder;*/
 
     @Autowired
     UserService userService;
@@ -48,6 +52,7 @@ public class ListenerController {
 
     @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
     public String saveUser(@ModelAttribute("user") User user) {
+    //    user.setUserPassword(passwordEncoder.encode(user.getUserPassword()));
         user.setEnabled("1");
         Authority authority = getAuthority(user);
         user.setAuthority(authority);
@@ -57,8 +62,6 @@ public class ListenerController {
 
     private Authority getAuthority(User user) {
         Authority authority = new Authority();
-        long id = userService.findAll().stream().max(Comparator.comparingLong(User::getId)).orElse(null).getId();
-        authority.setId(id+1);
         authority.setUsername(user.getUserName());
         authority.setAuthority("ROLE_LISTENER");
         return authority;
