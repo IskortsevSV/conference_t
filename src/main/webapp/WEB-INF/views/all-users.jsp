@@ -22,6 +22,7 @@ ADD rooms
         <th>Id</th>
         <th>Name</th>
         <th>Enabled</th>
+        <th>Authority</th>
         <th>Options</th>
     </tr>
     <c:forEach var="user" items="${users}">
@@ -36,6 +37,7 @@ ADD rooms
             <td>${user.id}</td>
             <td>${user.userName}</td>
             <td>${user.enabled}</td>
+            <td>${user.authority.authority}</td>
             <td>
                 <input type="button" value="Update"
                        onclick="window.location.href='${updateButton}'"/>
@@ -46,6 +48,7 @@ ADD rooms
     </c:forEach>
 
 </table>
+
 
 <br><br>
 <a href="/">Main page</a>
