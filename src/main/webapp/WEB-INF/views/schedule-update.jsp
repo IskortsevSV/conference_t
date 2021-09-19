@@ -5,11 +5,14 @@
     <title>Schedule update Date</title>
 </head>
 <body>
-<form:form action="saveSchedule" modelAttribute="schedule" method="post">
+<form:form action="saveSchedule" modelAttribute="schedule" method="POST">
     <form:hidden path="id"/>
+    <form:hidden path="report"/>
+    <form:hidden path="audience"/>
     <br>
     Date: <form:input path="dateTimeStart"/>
-    <br>
+
+
     <input type="submit" value="OK">
 </form:form>
 </body>
