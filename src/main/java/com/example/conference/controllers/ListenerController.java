@@ -46,7 +46,7 @@ public class ListenerController {
         return "registration-page";
     }
 
-    @RequestMapping(value = "/saveUser", method = RequestMethod.GET)
+    @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
     public String saveUser(@ModelAttribute("user") User user) {
         user.setEnabled("1");
         userService.saveUser(user);
