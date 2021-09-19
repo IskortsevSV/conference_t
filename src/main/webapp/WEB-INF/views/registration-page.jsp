@@ -10,7 +10,7 @@
 <h2> Registration only Listener</h2>
 <br>
 
-<form:form action="saveUser" modelAttribute="user" method="get">
+<form:form action="saveUser" modelAttribute="user" method="post">
     <form:hidden path="id"/>
     Name: <form:input path="userName"/>
     <br><br>
