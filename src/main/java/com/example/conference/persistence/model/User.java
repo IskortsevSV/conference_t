@@ -24,8 +24,7 @@ public class User {
     @Column(name = "enabled")
     private String enabled;
 
-    // @OneToOne(mappedBy = "user", cascade = {CascadeType.ALL})
-    @Transient
+    @OneToOne(mappedBy = "user", cascade = {CascadeType.ALL})
     private Authority authority;
 
 
