@@ -62,8 +62,6 @@ public class SpeakerController {
 
     @RequestMapping(value = "/saveTalk")
     public String saveTalk(@ModelAttribute("talk") Talk talk) {
-/*        User user = (User) request.getSession().getAttribute("user");
-        talk.setSpeaker(user.getId());*/
         talkService.saveTalk(talk);
         return "redirect:/speaker/all";
     }
