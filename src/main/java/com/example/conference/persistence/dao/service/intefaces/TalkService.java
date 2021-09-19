@@ -15,9 +15,9 @@ public interface TalkService {
 
     void saveTalk(Talk Talk);
 
-    Talk getTalk(int id);
+    Talk getTalk(long id);
 
-    void deleteTalk(int id);
+    void deleteTalk(long id);
 
 
 }

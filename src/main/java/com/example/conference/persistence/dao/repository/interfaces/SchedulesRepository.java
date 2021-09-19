@@ -14,9 +14,9 @@ public interface SchedulesRepository {
 
     void saveSchedule(Schedule schedule);
 
-    Schedule getSchedule(int id);
+    Schedule getSchedule(long id);
 
-    void deleteSchedule(int id);
+    void deleteSchedule(long id);
 
     List<Schedule> getAll();
 }

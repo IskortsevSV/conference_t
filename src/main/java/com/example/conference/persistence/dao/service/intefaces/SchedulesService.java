@@ -17,9 +17,9 @@ public interface SchedulesService {
 
     void saveSchedule(Schedule schedule);
 
-    public Schedule getSchedule(int id);
+    public Schedule getSchedule(long id);
 
-    public void deleteSchedule(int id);
+    public void deleteSchedule(long id);
 
     public List<Schedule> getAll();
 

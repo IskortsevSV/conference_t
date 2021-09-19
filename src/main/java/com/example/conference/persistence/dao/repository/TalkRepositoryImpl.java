@@ -37,13 +37,13 @@ public class TalkRepositoryImpl implements TalkRepository {
     }
 
     @Override
-    public Talk getTalk(int id) {
+    public Talk getTalk(long id) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Talk.class, id);
     }
 
     @Override
-    public void deleteTalk(int id) {
+    public void deleteTalk(long id) {
         Session session = sessionFactory.getCurrentSession();
         Query<Talk> query = session.createQuery("delete from Talk where id =:talkId");
         query.setParameter("talkId", id);

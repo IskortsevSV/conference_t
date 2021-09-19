@@ -39,13 +39,13 @@ public class SchedulesRepositoryImpl implements SchedulesRepository{
     }
 
     @Override
-    public Schedule getSchedule(int id) {
+    public Schedule getSchedule(long id) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Schedule.class, id);
     }
 
     @Override
-    public void deleteSchedule(int id) {
+    public void deleteSchedule(long id) {
         Session session = sessionFactory.getCurrentSession();
         Query<Schedule> query = session.createQuery("delete from Schedule where id =:scheduleId");
         query.setParameter("scheduleId", id);

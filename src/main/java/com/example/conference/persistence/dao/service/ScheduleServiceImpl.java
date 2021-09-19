@@ -33,13 +33,13 @@ public class ScheduleServiceImpl implements SchedulesService {
 
     @Override
     @Transactional
-    public Schedule getSchedule(int id) {
+    public Schedule getSchedule(long id) {
         return repository.getSchedule(id);
     }
 
     @Override
     @Transactional
-    public void deleteSchedule(int id) {
+    public void deleteSchedule(long id) {
         repository.deleteSchedule(id);
     }
 

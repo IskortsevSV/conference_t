@@ -11,8 +11,8 @@ public interface TalkRepository {
 
     void saveTalk(Talk talk);
 
-    Talk getTalk(int id);
+    Talk getTalk(long id);
 
-    void deleteTalk(int id);
+    void deleteTalk(long id);
 
 }

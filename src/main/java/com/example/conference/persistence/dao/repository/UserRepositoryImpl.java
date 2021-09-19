@@ -38,13 +38,13 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User getUser(int id) {
+    public User getUser(long id) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(User.class, id);
     }
 
     @Override
-    public void deleteUser(int id) {
+    public void deleteUser(long id) {
         Session session = sessionFactory.getCurrentSession();
         Query<User> query = session.createQuery("delete from User where id =:userId");
         query.setParameter("userId", id);

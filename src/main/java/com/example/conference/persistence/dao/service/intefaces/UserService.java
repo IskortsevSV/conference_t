@@ -15,9 +15,9 @@ public interface UserService {
 
     void saveUser(User user);
 
-    User getUser(int id);
+    User getUser(long id);
 
-    void deleteUser(int id);
+    void deleteUser(long id);
 
     void saveAuthority(Authority authority);
 

@@ -34,13 +34,13 @@ public class TalkServiceImpl implements TalkService {
 
     @Override
     @Transactional
-    public Talk getTalk(int id) {
+    public Talk getTalk(long id) {
         return talkRepository.getTalk(id);
     }
 
     @Override
     @Transactional
-    public void deleteTalk(int id) {
+    public void deleteTalk(long id) {
         talkRepository.deleteTalk(id);
     }
 }
