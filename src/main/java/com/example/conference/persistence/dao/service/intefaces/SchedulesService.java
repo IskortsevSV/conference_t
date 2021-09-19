@@ -1,9 +1,6 @@
 package com.example.conference.persistence.dao.service.intefaces;
 
 import com.example.conference.persistence.model.Schedule;
-import com.example.conference.persistence.model.Talk;
-import com.example.conference.persistence.model.User;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,10 +14,10 @@ public interface SchedulesService {
 
     void saveSchedule(Schedule schedule);
 
-    public Schedule getSchedule(long id);
+    Schedule getSchedule(long id);
 
-    public void deleteSchedule(long id);
+    void deleteSchedule(long id);
 
-    public List<Schedule> getAll();
+    List<Schedule> getAll();
 
 }
