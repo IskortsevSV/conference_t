@@ -18,9 +18,9 @@ public class Authority {
   @Column(name = "authority")
   private String authority;
 
- /* @OneToOne(cascade = CascadeType.ALL) // тип отношения один к одному , cascade - связь со связанными Entity
-  @JoinColumn(name = "authority_id")
-  private User user;*/
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "id")
+  private User user;
 
 
   public Authority() {
