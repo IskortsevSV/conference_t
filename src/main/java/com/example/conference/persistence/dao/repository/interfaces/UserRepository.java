@@ -4,6 +4,7 @@ package com.example.conference.persistence.dao.repository.interfaces;
  * by Iskortsev S.V.
  */
 
+import com.example.conference.persistence.model.Authority;
 import com.example.conference.persistence.model.User;
 
 
@@ -20,4 +21,5 @@ public interface UserRepository  {
 
     void deleteUser(int id);
 
+    void saveAuthority(Authority authority);
 }

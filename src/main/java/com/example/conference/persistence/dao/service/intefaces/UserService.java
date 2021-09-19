@@ -1,5 +1,6 @@
 package com.example.conference.persistence.dao.service.intefaces;
 
+import com.example.conference.persistence.model.Authority;
 import com.example.conference.persistence.model.User;
 
 import java.util.List;
@@ -17,5 +18,7 @@ public interface UserService {
     User getUser(int id);
 
     void deleteUser(int id);
+
+    void saveAuthority(Authority authority);
 
 }

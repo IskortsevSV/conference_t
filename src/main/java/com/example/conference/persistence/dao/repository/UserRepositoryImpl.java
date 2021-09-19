@@ -1,6 +1,7 @@
 package com.example.conference.persistence.dao.repository;
 
 import com.example.conference.persistence.dao.repository.interfaces.UserRepository;
+import com.example.conference.persistence.model.Authority;
 import com.example.conference.persistence.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -39,8 +40,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User getUser(int id) {
         Session session = sessionFactory.getCurrentSession();
-        User user = session.get(User.class, id);
-        return user;
+        return session.get(User.class, id);
     }
 
     @Override
@@ -50,4 +50,13 @@ public class UserRepositoryImpl implements UserRepository {
         query.setParameter("userId", id);
         query.executeUpdate();
     }
+
+    @Override
+    public void saveAuthority(Authority authority) {
+        Session session = sessionFactory.getCurrentSession();
+        System.out.println("-->" + authority);
+        session.saveOrUpdate(authority);
+    }
+
+
 }

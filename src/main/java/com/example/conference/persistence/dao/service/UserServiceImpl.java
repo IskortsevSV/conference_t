@@ -2,6 +2,7 @@ package com.example.conference.persistence.dao.service;
 
 import com.example.conference.persistence.dao.repository.interfaces.UserRepository;
 import com.example.conference.persistence.dao.service.intefaces.UserService;
+import com.example.conference.persistence.model.Authority;
 import com.example.conference.persistence.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,5 +44,11 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void deleteUser(int id) {
         userRepository.deleteUser(id);
+    }
+
+    @Override
+    @Transactional
+    public void saveAuthority(Authority authority) {
+        userRepository.saveAuthority(authority);
     }
 }
