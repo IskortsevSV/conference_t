@@ -49,19 +49,18 @@ public class ListenerController {
     @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
     public String saveUser(@ModelAttribute("user") User user) {
         user.setEnabled("1");
-        userService.saveUser(user);
         Authority authority = getAuthority(user);
-        userService.saveAuthority(authority);
+        user.setAuthority(authority);
+        userService.saveUser(user);
         return "redirect:/";
     }
 
     private Authority getAuthority(User user) {
         Authority authority = new Authority();
         long id = userService.findAll().stream().max(Comparator.comparingLong(User::getId)).orElse(null).getId();
-        authority.setId(id);
+        authority.setId(id+1);
         authority.setUsername(user.getUserName());
         authority.setAuthority("ROLE_LISTENER");
-        System.out.println("--1---> " + authority);
         return authority;
     }
 
