@@ -5,15 +5,15 @@ CREATE TABLE IF NOT EXISTS users
 (
  id int AUTO_INCREMENT,
  username VARCHAR(15),
- userpassword VARCHAR(30),
+ password VARCHAR(150),
  authority VARCHAR(15),
  PRIMARY KEY (id)
 );
 
-INSERT INTO users (username,userpassword,enabled)
+INSERT INTO users (username,password,enabled)
 VALUES('mike','mike','admin'),('john','john','speaker'),('liza','liza','listner');
 
-INSERT INTO users (username,userpassword,enabled)
+INSERT INTO users (username,password,enabled)
 VALUES('gleb','gleb','speaker'),('dima','dima','listner');
 
 CREATE TABLE IF NOT EXISTS talks
