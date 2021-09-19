@@ -70,3 +70,6 @@ CREATE TABLE authorities (
                              authority varchar(25),
                              FOREIGN KEY (id) references users(id)
 );
+
+ALTER TABLE authorities AUTO_INCREMENT = 5;
+ALTER TABLE users AUTO_INCREMENT = 5;
