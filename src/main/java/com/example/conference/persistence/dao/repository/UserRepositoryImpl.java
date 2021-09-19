@@ -54,7 +54,6 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public void saveAuthority(Authority authority) {
         Session session = sessionFactory.getCurrentSession();
-        System.out.println("-->" + authority);
         session.saveOrUpdate(authority);
     }
 
