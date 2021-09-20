@@ -26,8 +26,8 @@ import java.util.List;
 @Controller()
 public class ListenerController {
 
-  /*  @Autowired
-    private PasswordEncoder passwordEncoder;*/
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     UserService userService;
@@ -52,7 +52,7 @@ public class ListenerController {
 
     @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
     public String saveUser(@ModelAttribute("user") User user) {
-    //    user.setUserPassword(passwordEncoder.encode(user.getUserPassword()));
+        user.setUserPassword(passwordEncoder.encode(user.getUserPassword()));
         user.setEnabled("1");
         Authority authority = getAuthority(user);
         user.setAuthority(authority);
