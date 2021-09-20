@@ -57,5 +57,12 @@ public class UserRepositoryImpl implements UserRepository {
         session.saveOrUpdate(authority);
     }
 
+    @Override
+    public User getUserByName(String name) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(User.class, name);
+    }
+
+
 
 }

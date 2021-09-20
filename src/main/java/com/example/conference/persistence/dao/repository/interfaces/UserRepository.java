@@ -22,4 +22,6 @@ public interface UserRepository  {
     void deleteUser(long id);
 
     void saveAuthority(Authority authority);
+
+    User getUserByName(String name);
 }
