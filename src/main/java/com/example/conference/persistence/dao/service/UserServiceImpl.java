@@ -39,6 +39,11 @@ public class UserServiceImpl implements UserService {
     public User getUser(long id) {
         return   userRepository.getUser(id);
     }
+    @Override
+    @Transactional
+    public User getUserByName(String name) {
+        return   userRepository.getUserByName(name);
+    }
 
     @Override
     @Transactional

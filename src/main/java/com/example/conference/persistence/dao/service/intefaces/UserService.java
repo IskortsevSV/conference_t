@@ -17,6 +17,8 @@ public interface UserService {
 
     User getUser(long id);
 
+    User getUserByName(String name);
+
     void deleteUser(long id);
 
     void saveAuthority(Authority authority);
