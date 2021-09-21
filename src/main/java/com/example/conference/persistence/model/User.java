@@ -3,6 +3,7 @@ package com.example.conference.persistence.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * by Iskortsev S.V.
@@ -27,6 +28,8 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = {CascadeType.ALL})
     private Authority authority;
 
+    @OneToMany(mappedBy ="speaker" ,cascade = CascadeType.ALL)
+    private List<Talk> talks;
 
 
     public User() {
