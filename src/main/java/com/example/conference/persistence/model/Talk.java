@@ -19,21 +19,27 @@ public class Talk {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private long id;
     @Column(name = "report")
     private String report;
-
     @Column(name = "speaker")
-    private Integer speaker;
+    private Long speaker;
+
+ /*   @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "speaker")
+    private User user;*/
+
 
     @Transient
     private String speakerName;
+
+
 
     public Talk() {
     }
 
 
-    public Talk(int id,String report, String speakerName) {
+    public Talk(long id,String report, String speakerName) {
         this.id = id;
         this.report = report;
         this.speakerName = speakerName;
