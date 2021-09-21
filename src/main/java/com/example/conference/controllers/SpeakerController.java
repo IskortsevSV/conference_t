@@ -2,8 +2,10 @@ package com.example.conference.controllers;
 
 import com.example.conference.persistence.dao.service.intefaces.SchedulesService;
 import com.example.conference.persistence.dao.service.intefaces.TalkService;
+import com.example.conference.persistence.dao.service.intefaces.UserService;
 import com.example.conference.persistence.model.Schedule;
 import com.example.conference.persistence.model.Talk;
+import com.example.conference.persistence.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +29,9 @@ public class SpeakerController {
 
     @Autowired
     TalkService talkService;
+
+    @Autowired
+    UserService userService;
 
     @Autowired
     SchedulesService schedulesService;
@@ -62,6 +67,14 @@ public class SpeakerController {
 
     @RequestMapping(value = "/saveTalk")
     public String saveTalk(@ModelAttribute("talk") Talk talk) {
+        if(talk.getId()!=0){
+            String speakerName = talk.getSpeakerName();
+            long id = userService.findAll().stream()
+                    .filter(user -> user.getUserName().equals(speakerName))
+                    .mapToLong(User::getId)
+                    .findFirst().getAsLong();
+            talk.setSpeaker(id);
+        }
         talkService.saveTalk(talk);
         return "redirect:/speaker/all";
     }
