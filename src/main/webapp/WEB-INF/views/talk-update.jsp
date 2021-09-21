@@ -5,17 +5,19 @@
     <title>Update talk</title>
 </head>
 <body>
+<%----%>
 
-<form:form action="saveTalk" modelAttribute="talk" method="post">
+<form:form action="saveTalk" modelAttribute="talk" method="get">
     <form:hidden path="id"/>
     <br>
     Report: <form:input path="report"/>
     <br>
-    <br>
-    Speaker: <form:input path="speaker"/>
+    SpeakerName: <form:input path="speakerName" value="${pageContext.request.userPrincipal.name}"/>
     <br>
     <input type="submit" value="OK">
 </form:form>
+
+
 
 
 
