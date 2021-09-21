@@ -14,12 +14,12 @@ public class OneTimeUtil {
     public static boolean doNotEqualsOneTime(Schedule schedule, SchedulesService schedulesService) {
         List<Schedule> allSchedules = schedulesService.getAll();
         String checkDateTime = schedule.getDateTimeStart();
-        int checkAudience = schedule.getAudience();
+        long checkAudience = schedule.getAudience();
         boolean result = false;
 
         for (Schedule allSchedule : allSchedules) {
             String dateTimeStart = allSchedule.getDateTimeStart();
-            int audience = allSchedule.getAudience();
+            long audience = allSchedule.getAudience();
             if (dateTimeStart.equals(checkDateTime) && audience == checkAudience) {
                 result = true;
             }
