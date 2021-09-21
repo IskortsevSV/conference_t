@@ -17,13 +17,13 @@ public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private long id;
     @Column(name = "audience")
-    private int audience;
+    private long audience;
     @Column(name = "date_time_start")
     private String dateTimeStart;
     @Column(name = "report")
-    private int report;
+    private long report;
 
     @Transient
     private String audienceName;
@@ -36,13 +36,13 @@ public class Schedule {
     }
 
 
-    public Schedule(int audience, String dateTimeStart, int report) {
+    public Schedule(long audience, String dateTimeStart, long report) {
         this.audience = audience;
         this.dateTimeStart = dateTimeStart;
         this.report = report;
     }
 
-    public Schedule(int id,String dateTimeStart, String audienceName, String reportName, String userName) {
+    public Schedule(long id,String dateTimeStart, String audienceName, String reportName, String userName) {
         this.id = id;
         this.dateTimeStart = dateTimeStart;
         this.audienceName = audienceName;
