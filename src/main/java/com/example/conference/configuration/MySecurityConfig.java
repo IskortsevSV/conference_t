@@ -18,7 +18,7 @@ import javax.sql.DataSource;
 /**
  * by Iskortsev S.V.
  */
-@Configuration
+
 @EnableWebSecurity
 public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
