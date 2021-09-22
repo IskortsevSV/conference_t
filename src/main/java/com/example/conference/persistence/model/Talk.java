@@ -1,11 +1,9 @@
 package com.example.conference.persistence.model;
 
 import lombok.Data;
-import net.bytebuddy.implementation.bind.annotation.Empty;
-import org.hibernate.annotations.SQLDelete;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * by Iskortsev S.V.
@@ -25,10 +23,9 @@ public class Talk {
     @Column(name = "speaker")
     private Long speaker;
 
- /*   @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "speaker")
-    private User user;*/
-
+    @OneToMany(cascade = {CascadeType.REFRESH,CascadeType.PERSIST,CascadeType.DETACH,CascadeType.MERGE}
+            ,mappedBy = "talks") // это связь ищи в классе department
+    private List<Schedule> scheduleList;
 
     @Transient
     private String speakerName;
