@@ -43,4 +43,10 @@ public class TalkServiceImpl implements TalkService {
     public void deleteTalk(long id) {
         talkRepository.deleteTalk(id);
     }
+
+    @Override
+    @Transactional
+    public void updateSpeakerToNull(long id) {
+        talkRepository.updateSpeakerToNull(id);
+    }
 }
