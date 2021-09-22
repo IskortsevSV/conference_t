@@ -49,4 +49,12 @@ public class TalkRepositoryImpl implements TalkRepository {
         query.setParameter("talkId", id);
         query.executeUpdate();
     }
+
+    @Override
+    public void updateSpeakerToNull(long id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query<Talk> query = session.createQuery("UPDATE Talk SET speaker = null WHERE speaker =:talkId");
+        query.setParameter("talkId", id);
+        query.executeUpdate();
+    }
 }
