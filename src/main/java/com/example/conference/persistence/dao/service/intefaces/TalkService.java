@@ -20,4 +20,5 @@ public interface TalkService {
     void deleteTalk(long id);
 
 
+    void updateSpeakerToNull(long id);
 }
