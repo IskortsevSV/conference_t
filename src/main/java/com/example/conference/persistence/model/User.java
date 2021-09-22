@@ -28,10 +28,6 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = {CascadeType.ALL})
     private Authority authority;
 
-    @OneToMany(mappedBy ="speaker" ,cascade = CascadeType.ALL)
-    private List<Talk> talks;
-
-
     public User() {
     }
 
