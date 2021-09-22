@@ -15,4 +15,5 @@ public interface TalkRepository {
 
     void deleteTalk(long id);
 
+    void updateSpeakerToNull(long id);
 }
