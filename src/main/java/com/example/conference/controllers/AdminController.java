@@ -1,5 +1,6 @@
 package com.example.conference.controllers;
 
+import com.example.conference.persistence.dao.service.intefaces.TalkService;
 import com.example.conference.persistence.dao.service.intefaces.UserService;
 import com.example.conference.persistence.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,8 @@ public class AdminController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    TalkService talkService;
 
     @RequestMapping(value = "/allUsers")
     public String getAllUsers(Model model) {
@@ -40,6 +43,7 @@ public class AdminController {
 
     @RequestMapping("/deleteUser")
     public String deleteUser(@RequestParam("userId") int id) {
+        talkService.updateSpeakerToNull(id);
         userService.deleteUser(id);
         return "redirect:/admin/allUsers";
     }
