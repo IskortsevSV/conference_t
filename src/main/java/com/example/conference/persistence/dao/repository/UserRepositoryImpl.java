@@ -46,6 +46,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public void deleteUser(long id) {
         Session session = sessionFactory.getCurrentSession();
+        deleteAuthority(id);
         Query<User> query = session.createQuery("delete from User where id =:userId");
         query.setParameter("userId", id);
         query.executeUpdate();
@@ -61,6 +62,13 @@ public class UserRepositoryImpl implements UserRepository {
     public User getUserByName(String name) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(User.class, name);
+    }
+
+    public void deleteAuthority(long id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query<User> query = session.createQuery("delete from Authority where id =:authId");
+        query.setParameter("authId", id);
+        query.executeUpdate();
     }
 
 
