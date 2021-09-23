@@ -20,8 +20,6 @@
         <form:hidden path="authority.id" value="${user.id}"/>
         Enabled: <form:input path="enabled" value="1"/>
         <br><br>
-        Username: <form:input path="authority.username" value="${user.userName}"/>
-        <br><br>
         Authority: <form:input path="authority.authority" value="ROLE_LISTENER"/>
         <br><br>
     </security:authorize>
