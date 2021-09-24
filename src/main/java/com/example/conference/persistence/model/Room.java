@@ -3,6 +3,7 @@ package com.example.conference.persistence.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,9 +22,11 @@ public class Room {
     @Column(name = "audience")
     private String audience;
 
-    @OneToMany(cascade = {CascadeType.REFRESH,CascadeType.PERSIST,CascadeType.DETACH,CascadeType.MERGE}
-            ,mappedBy = "rooms") // это связь ищи в классе department
-    private List<Schedule> scheduleList;
+
+//(cascade = {CascadeType.REFRESH,CascadeType.PERSIST,CascadeType.DETACH,CascadeType.MERGE}
+//            ,mappedBy = "rooms")
+ /*   @OneToMany
+    private List<Schedule> schedules;*/
 
     public Room() {
     }
@@ -31,4 +34,12 @@ public class Room {
     public Room(String audience) {
         this.audience = audience;
     }
+
+/*    public void addRoomToSchedule(Schedule schedule) {
+        if (schedules == null) {
+            schedules = new ArrayList<>();
+        }
+        schedules.add(schedule);
+        schedule.setRooms(this); //из-за того что эта Bi-direction связь (когда оба знают друг о друге) добавляем эту связь
+    }*/
 }
