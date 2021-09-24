@@ -55,7 +55,7 @@ public class SchedulesRepositoryImpl implements SchedulesRepository{
     @Override
     public List<Schedule> getAll() {
         Session session = sessionFactory.getCurrentSession();
-        Query<Schedule> query = session.createQuery("from Schedule",Schedule.class);
+        Query<Schedule> query = session.createQuery("FROM Schedule",Schedule.class);
         return query.getResultList();
     }
 
