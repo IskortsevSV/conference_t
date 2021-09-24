@@ -25,11 +25,13 @@ public class Schedule {
     @Column(name = "report")
     private long report;
 
-    @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.PERSIST,CascadeType.DETACH,CascadeType.MERGE})
+
+/*    @ManyToOne(cascade = CascadeType.ALL)
     private Talk talks;
 
-    @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.PERSIST,CascadeType.DETACH,CascadeType.MERGE})
-    private Room rooms;
+//{CascadeType.REFRESH,CascadeType.PERSIST,CascadeType.DETACH,CascadeType.MERGE}
+    @ManyToOne
+    private Room rooms;*/
 
     @Transient
     private String audienceName;
