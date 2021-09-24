@@ -23,9 +23,9 @@ public class Talk {
     @Column(name = "speaker")
     private Long speaker;
 
-    @OneToMany(cascade = {CascadeType.REFRESH,CascadeType.PERSIST,CascadeType.DETACH,CascadeType.MERGE}
+/*    @OneToMany(cascade = {CascadeType.REFRESH,CascadeType.PERSIST,CascadeType.DETACH,CascadeType.MERGE}
             ,mappedBy = "talks") // это связь ищи в классе department
-    private List<Schedule> scheduleList;
+    private List<Schedule> scheduleList;*/
 
     @Transient
     private String speakerName;
