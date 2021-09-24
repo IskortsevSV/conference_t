@@ -13,9 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.example.conference.utils.OneTimeUtil.doNotEqualsOneTime;
 
@@ -46,7 +45,7 @@ public class SpeakerController {
     }
 
     @RequestMapping("/add")
-    public String addUser(Model model) {
+    public String addTalk(Model model) {
         Talk talk = new Talk();
         model.addAttribute("talk", talk);
         return "talk-update";
@@ -67,7 +66,7 @@ public class SpeakerController {
 
     @RequestMapping(value = "/saveTalk")
     public String saveTalk(@ModelAttribute("talk") Talk talk) {
-        if(talk.getId()!=0){
+        if (talk.getId() != 0) {
             String speakerName = talk.getSpeakerName();
             long id = userService.findAll().stream()
                     .filter(user -> user.getUserName().equals(speakerName))
@@ -79,6 +78,18 @@ public class SpeakerController {
         return "redirect:/speaker/all";
     }
 
+
+    @RequestMapping("/addSchedule")
+    public String addSchedule(Model model) {
+        Schedule schedule = new Schedule();
+
+        List<String> talks = talkService.findAll().stream().map(Talk::getReport).collect(Collectors.toList());
+
+        model.addAttribute("talks", talks);
+        model.addAttribute("schedule", schedule);
+        return "schedule-update";
+    }
+
     @RequestMapping("/updateSchedule")
     public String updateSchedule(@RequestParam("scheduleId") int id, Model model) {
         Schedule schedule = schedulesService.getSchedule(id);
@@ -88,18 +99,20 @@ public class SpeakerController {
 
     @RequestMapping(value = "/saveSchedule", method = RequestMethod.GET)
     public String saveSchedule(@ModelAttribute("schedule") Schedule schedule) {
-        if (doNotEqualsOneTime(schedule, schedulesService)) return "error";
-        else {
+        if (doNotEqualsOneTime(schedule, schedulesService)) {
+            return "error";
+        } else {
             schedulesService.saveSchedule(schedule);
             return "redirect:/speaker/all";
         }
-
     }
 
-/*    @RequestMapping("/deleteSchedule")
+    @RequestMapping("/deleteSchedule")
     public String deleteSchedule(@RequestParam("scheduleId") int id) {
         schedulesService.deleteSchedule(id);
         return "redirect:/speaker/all";
-    }*/
+    }
+
+
 
 }
