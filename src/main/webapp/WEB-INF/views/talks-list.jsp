@@ -46,6 +46,9 @@ have List Talks CRUD
 </table>
 <br><br>
 <h2>Schedule:</h2>
+
+<a href="/speaker/addSchedule">Add Talk</a>
+
 <br><br>
 <table border="1">
     <tr>
@@ -63,9 +66,9 @@ have List Talks CRUD
         <c:url var="updateButton" value="/speaker/updateSchedule"> <%--создаем link--%>
             <c:param name ="scheduleId" value = "${schedule.id}"/>
         </c:url>
-       <%-- <c:url var="deleteButton" value="/speaker/deleteSchedule"> &lt;%&ndash;создаем link&ndash;%&gt;
+        <c:url var="deleteButton" value="/speaker/deleteSchedule"> <%--создаем link--%>
             <c:param name ="scheduleId" value = "${schedule.id}"/>
-        </c:url>--%>
+        </c:url>
         <tr>
             <td>${schedule.id}</td>
             <td>${schedule.dateTimeStart}</td>
@@ -75,8 +78,8 @@ have List Talks CRUD
             <td>
                 <input type="button" value="Update"
                        onclick="window.location.href='${updateButton}'"/>
-            <%--    <input type="button" value="Delete"
-                       onclick="window.location.href='${deleteButton}'"/>--%>
+                <input type="button" value="Delete"
+                       onclick="window.location.href='${deleteButton}'"/>
             </td>
         </tr>
     </c:forEach>
