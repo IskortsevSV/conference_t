@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.example.conference.utils.OneTimeUtil.doNotEqualsOneTime;
+import static com.example.conference.utils.OneTimeUtil.checkBothEqualsTimeAndAudience;
 
 /**
  * by Iskortsev S.V.
@@ -99,7 +99,7 @@ public class SpeakerController {
 
     @RequestMapping(value = "/saveSchedule", method = RequestMethod.GET)
     public String saveSchedule(@ModelAttribute("schedule") Schedule schedule) {
-        if (doNotEqualsOneTime(schedule, schedulesService)) {
+        if (checkBothEqualsTimeAndAudience(schedule, schedulesService)) {
             return "error";
         } else {
             schedulesService.saveSchedule(schedule);
