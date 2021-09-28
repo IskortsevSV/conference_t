@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,9 +38,11 @@ public class SpeakerController {
     SchedulesService schedulesService;
 
     @RequestMapping(value = "/all")
-    public String getAllTalksAndSchedules(Model model) {
+    public String getAllTalksAndSchedules(Model model,HttpServletRequest request) {
         List<Talk> talks = talkService.findAll();
         model.addAttribute("talks", talks);
+        List<String> talksReport = talks.stream().map(Talk::getReport).collect(Collectors.toList());
+        request.getSession().setAttribute("talksReport", talksReport);
         List<Schedule> schedules = schedulesService.findAll();
         model.addAttribute("schedules", schedules);
         return "talks-list";
@@ -80,12 +84,9 @@ public class SpeakerController {
 
 
     @RequestMapping("/addSchedule")
-    public String addSchedule(Model model) {
+    public String addSchedule(Model model,HttpServletRequest request) {
         Schedule schedule = new Schedule();
 
-        List<String> talks = talkService.findAll().stream().map(Talk::getReport).collect(Collectors.toList());
-
-        model.addAttribute("talks", talks);
         model.addAttribute("schedule", schedule);
         return "schedule-update";
     }
