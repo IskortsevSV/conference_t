@@ -21,7 +21,7 @@ have List Talks CRUD
     <tr>
         <th>ID</th>
         <th>Report</th>
-        <th>Speaker</th>
+        <th>Author</th>
         <th>Optional</th>
     </tr>
     <c:forEach var="talk" items="${talks}">
