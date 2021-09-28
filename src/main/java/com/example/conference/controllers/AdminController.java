@@ -2,6 +2,7 @@ package com.example.conference.controllers;
 
 import com.example.conference.persistence.dao.service.intefaces.TalkService;
 import com.example.conference.persistence.dao.service.intefaces.UserService;
+import com.example.conference.persistence.model.Authority;
 import com.example.conference.persistence.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -50,6 +50,9 @@ public class AdminController {
 
     @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
     public String saveUser(@ModelAttribute("user") User user) {
+        Authority authority = user.getAuthority();
+        authority.setUsername(user.getUserName());
+        user.setAuthority(authority);
         userService.saveUser(user);
         return "redirect:/admin/allUsers";
     }
