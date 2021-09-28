@@ -9,10 +9,6 @@
 <h2>For admin</h2>
 <br><br>
 
-CRUD change user listener to speaker
-ADD talks
-ADD rooms
-
 <br><br>
 <a href="/registration">Add User</a>
 <br><br>
