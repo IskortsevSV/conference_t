@@ -25,7 +25,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>4.12</version>
       <scope>test</scope>
     </dependency>
 
@@ -52,13 +52,14 @@
     </dependency>
 
 
-    <!--servlet-api -->
-    <dependency>
+    <!--servlet-api УБРАЛ ИЗ ОШИБКИ В JUNIT тестах-->
+
+<!--    <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>servlet-api</artifactId>
       <version>2.5</version>
       <scope>provided</scope>
-    </dependency>
+    </dependency>-->
 
     <!--lombok -->
     <dependency>
@@ -107,6 +108,15 @@
       <groupId>org.springframework.data</groupId>
       <artifactId>spring-data-commons</artifactId>
       <version>2.1.5.RELEASE</version>
+
+      <exclusions>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+        </exclusion>
+      </exclusions>
+
+
     </dependency>
 
     <!-- Spring Security Web -->
@@ -130,6 +140,13 @@
       <version>${spring.security.version}</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-test</artifactId>
+      <version>${spring.security.version}</version>
+      <scope>test</scope>
+    </dependency>
+
     <!-- javax.servlet-api -->
     <dependency>
       <groupId>javax.servlet</groupId>
@@ -138,6 +155,11 @@
       <scope>provided</scope>
     </dependency>
 
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
     <!--jackson-databind -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
@@ -145,27 +167,22 @@
       <version>2.12.3</version>
     </dependency>
 
+    <!--spring test -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${spring.version}</version>
+      <scope>test</scope>
+    </dependency>
 
-    <!-- &lt;!&ndash; spring-security-config &ndash;&gt;
-     <dependency>
-       <groupId>org.springframework.security</groupId>
-       <artifactId>spring-security-config</artifactId>
-       <version>${spring.security}</version>
-     </dependency>
+    <!--mockito -->
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-all</artifactId>
+      <version>1.9.5</version>
+      <scope>test</scope>
+    </dependency>
 
-     &lt;!&ndash; spring-security-web &ndash;&gt;
-     <dependency>
-       <groupId>org.springframework.security</groupId>
-       <artifactId>spring-security-web</artifactId>
-       <version>${spring.security}</version>
-     </dependency>
-
-     &lt;!&ndash;  spring-security-taglibs &ndash;&gt;
-     <dependency>
-       <groupId>org.springframework.security</groupId>
-       <artifactId>spring-security-taglibs</artifactId>
-       <version>${spring.security}</version>
-     </dependency>-->
 
 
 
